@@ -1,0 +1,78 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: url(trees-500x800.png) rgb(1, 168, 168); /* for mobile view */ /*add second color that fills in the bottom along Y-axis and gets rid of white bottom */
+  background-repeat: repeat-x;
+  font-family: "Yomogi", cursive;
+}
+
+.cardContainer {
+  width: 600px; /* changed height + width to make images bigger */
+  height: 600px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  perspective: 1000px; /* adds depth to cards when flipping */
+}
+
+.card {
+  box-sizing: border-box;
+  width: calc(25% - 10px); /* changed height and width */
+  height: calc(25% - 10px); /* calc function allows us to subtract margin from width and height */
+  position: relative;
+  transition: all 0.6s;
+  transform-style: preserve-3d; /* also adds depth to cards while flipping */
+  transform: scale(1);
+  margin: auto;
+}
+
+.card:active {
+  transform: scale(0.97); /* will transform to 97% of its size */
+  transition: all 0.6s; /* allows us to click card */
+}
+
+.card_front,
+.card_bottom {
+  position: absolute;
+  height: 100%;
+  width: 100%; /* fits both imgs to size of card container */
+}
+
+.card_bottom {
+  transform: rotateY(180deg); /* tells back of card to also rotate 180 on the y-axis */
+  transition: all 0.6s; 
+  backface-visibility: hidden; /* removes "mirror image" and prevents a "flickering" effect when card unflips when not a match*/
+}
+
+/* tutorial setting "flip" class from the toggle classList function */
+.card.flip {
+  transform: rotateY(180deg);
+  transition: all 0.2s;
+  backface-visibility: hidden; /* overrides auto setting to show a mirror image of front face when "flipped" */
+}
+
+
+
+/* changed color for buttons */
+button {
+  border: 1px solid rgb(65, 84, 136);
+  height: 50px;
+  width: 122px;
+  border-radius: 22px;
+  color: rgb(1, 168, 168);
+  background-color: rgb(241, 241, 167);
+}
+
+.reset {
+  border: 1px solid rgb(65, 84, 136);
+  height: 50px;
+  width: 122px;
+  border-radius: 22px;
+  color: rgb(153, 91, 165);
+  background-color: rgb(241, 241, 167);
+}
