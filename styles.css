@@ -12,7 +12,7 @@ body {
 }
 
 header {
-    width: 100%;
+  width: 100%;
 }
 
 h1,
@@ -52,7 +52,9 @@ h3 {
 .card {
   box-sizing: border-box;
   width: calc(25% - 5px); /* changed height and width */
-  height: calc(25% - 5px); /* calc function allows us to subtract margin from width and height */
+  height: calc(
+    25% - 5px
+  ); /* calc function allows us to subtract margin from width and height */
   position: relative;
   transition: all 0.5s;
   transform-style: preserve-3d; /* also adds depth to cards while flipping */
@@ -73,7 +75,9 @@ h3 {
 }
 
 .card_bottom {
-  transform: rotateY(180deg); /* tells back of card to also rotate 180 on the y-axis */
+  transform: rotateY(
+    180deg
+  ); /* tells back of card to also rotate 180 on the y-axis */
   transition: all 0.5s;
   backface-visibility: hidden; /* removes "mirror image" and prevents a "flickering" effect when card unflips when not a match*/
 }
@@ -164,7 +168,7 @@ button {
   text-align: center;
   font-size: 1.25em;
   font-weight: bolder;
-  color:rgb(65, 84, 136);
+  color: rgb(65, 84, 136);
 }
 
 .close {
@@ -201,14 +205,15 @@ button {
 /* ~~~~~~~~~DESKTOP VIEW~~~~~~~~~~ */
 
 @media only screen and (min-width: 768px) {
-
   header {
     width: 80%;
     margin: auto;
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     flex-shrink: inherit;
+    position: relative;
   }
+
 
   h1 {
     font-size: 2.5rem;
@@ -234,10 +239,11 @@ button {
     width: 15%;
     flex-wrap: wrap;
     margin-right: 15%;
+    margin-left: 10px;
   }
 
   .cardContainer {
-    width: 600px; 
+    width: 600px;
     height: 75vh;
     display: flex;
     justify-content: center;
@@ -355,7 +361,9 @@ button {
     color: rgb(65, 84, 136);
   }
 
-  .close, .close2, .close3 {
+  .close,
+  .close2,
+  .close3 {
     color: rgb(153, 91, 165);
     font-size: 1.5em;
     display: block;
