@@ -1,169 +1,189 @@
 /* ~~~~~~~~~~~MOBILE VIEW~~~~~~~~~~~~~ */
 
 * {
-    padding: 0;
-    margin: 0;
-  }
-  
-  body {
-    background: url(trees-500x800.png) rgb(1, 168, 168); /* for mobile view */ /*add second color that fills in the bottom along Y-axis and gets rid of white bottom */
-    background-repeat: repeat-x;
-    font-family: "Yomogi", cursive;
+  padding: 0;
+  margin: 0;
+}
 
-  }
+body {
+  background: url(trees-500x800.png) rgb(1, 168, 168); /* for mobile view */ /*add second color that fills in the bottom along Y-axis and gets rid of white bottom */
+  background-repeat: repeat-x;
+  font-family: "Yomogi", cursive;
+}
 
-  .cardContainer {
-    width: 325px; 
-    height: 325px;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    perspective: 1000px; /* adds depth to cards when flipping */
-    pointer-events: none;
-  }
-
-  .card {
-    box-sizing: border-box;
-    width: calc(25% - 5px); /* changed height and width */
-    height: calc(25% - 5px); /* calc function allows us to subtract margin from width and height */
-    position: relative;
-    transition: all 0.5s;
-    transform-style: preserve-3d; /* also adds depth to cards while flipping */
-    transform: scale(1);
-    margin: auto;
-  }
-  
-  .card:active {
-    transform: scale(0.97); /* will transform to 97% of its size */
-    transition: all 0.5s; /* allows us to click card */
-  }
-  
-  .card_front,
-  .card_bottom {
-    position: absolute;
-    height: 100%;
-    width: 100%; /* fits both imgs to size of card container */
-  }
-  
-  .card_bottom {
-    transform: rotateY(
-      180deg
-    ); /* tells back of card to also rotate 180 on the y-axis */
-    transition: all 0.5s;
-    backface-visibility: hidden; /* removes "mirror image" and prevents a "flickering" effect when card unflips when not a match*/
-  }
-  
-  /* tutorial setting "flip" class from the toggle classList function */
-  .card.flip {
-    transform: rotateY(180deg);
-    transition: all 0.2s;
-    backface-visibility: hidden; /* overrides auto setting to show a mirror image of front face when "flipped" */
-  }
-  
-  .buttons {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-  }
-
-
-  button {
-    border: 1px solid rgb(65, 84, 136);
-    height: 30px;
-    width: 150px;
-    border-radius: 22px;
-    color: rgb(1, 168, 168);
-    background-color: rgb(241, 241, 167);
-    align-items: center;
-  }
-  
-  .reset {
-    border: 1px solid rgb(65, 84, 136);
-    height: 30px;
-    width: 150px;
-    border-radius: 22px;
-    color: rgb(153, 91, 165);
-    background-color: rgb(241, 241, 167);
-  }
-  
-  .modal {
-    display: block;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background: rgb(65, 84, 136, 0.6);
-  }
-  .modal2 {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background: rgb(65, 84, 136, 0.6);
-  }
-  .modal3 {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background: rgb(65, 84, 136, 0.6);
-  }
-  
-  .modalContent {
-    background: rgb(1, 168, 168);
-    margin: 15% auto;
-    padding: 20px;
-    border: 5px solid rgb(65, 84, 136);
-    width: 80%;
+h1, h2, h3 {
+    color:rgb(65, 84, 136);
     text-align: center;
-    font-size: 1.25em;
-    font-weight: bolder;
-    color: rgb(65, 84, 136);
-  }
-  
-  .close {
-    color: rgb(153, 91, 165);
-    font-size: 1.5em;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: rgb(241, 241, 167);
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
-  .fa-volume-off,
-  .fa-volume-up {
-    height: 50px;
-    width: 50px;
-    color: rgb(65, 84, 136);
-  }
-  
-  .fa-volume-off {
-    display: none;
-  }
+}
+
+h1 {
+    font-size: 1.5rem;
+}
+
+h2 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+.cardContainer {
+  width: 325px;
+  height: 325px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  perspective: 1000px; /* adds depth to cards when flipping */
+  pointer-events: none;
+}
+
+.card {
+  box-sizing: border-box;
+  width: calc(25% - 5px); /* changed height and width */
+  height: calc(
+    25% - 5px
+  ); /* calc function allows us to subtract margin from width and height */
+  position: relative;
+  transition: all 0.5s;
+  transform-style: preserve-3d; /* also adds depth to cards while flipping */
+  transform: scale(1);
+  margin: auto;
+}
+
+.card:active {
+  transform: scale(0.97); /* will transform to 97% of its size */
+  transition: all 0.5s; /* allows us to click card */
+}
+
+.card_front,
+.card_bottom {
+  position: absolute;
+  height: 100%;
+  width: 100%; /* fits both imgs to size of card container */
+}
+
+.card_bottom {
+  transform: rotateY(
+    180deg
+  ); /* tells back of card to also rotate 180 on the y-axis */
+  transition: all 0.5s;
+  backface-visibility: hidden; /* removes "mirror image" and prevents a "flickering" effect when card unflips when not a match*/
+}
+
+/* tutorial setting "flip" class from the toggle classList function */
+.card.flip {
+  transform: rotateY(180deg);
+  transition: all 0.2s;
+  backface-visibility: hidden; /* overrides auto setting to show a mirror image of front face when "flipped" */
+}
 
 
+.buttons {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
 
-  /* ~~~~~~~~~DESKTOP VIEW~~~~~~~~~~ */
+button {
+  border: 1px solid rgb(65, 84, 136);
+  height: 30px;
+  width: 160px;
+  border-radius: 22px;
+  color: rgb(1, 168, 168);
+  background-color: rgb(241, 241, 167);
+  align-items: center;
+}
 
-  @media only screen and (min-width: 768px) {
-  
+.reset {
+  border: 1px solid rgb(65, 84, 136);
+  height: 30px;
+  width: 160px;
+  border-radius: 22px;
+  color: rgb(153, 91, 165);
+  background-color: rgb(241, 241, 167);
+  margin-top: 5px;
+}
+
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgb(65, 84, 136, 0.6);
+}
+.modal2 {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgb(65, 84, 136, 0.6);
+}
+.modal3 {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgb(65, 84, 136, 0.6);
+}
+
+.modalContent {
+  background: rgb(1, 168, 168);
+  margin: 15% auto;
+  padding: 20px;
+  border: 5px solid rgb(65, 84, 136);
+  width: 80%;
+  text-align: center;
+  font-size: 1.25em;
+  font-weight: bolder;
+  color: rgb(65, 84, 136);
+}
+
+.close {
+  color: rgb(153, 91, 165);
+  font-size: 1.5em;
+}
+
+.close:hover,
+.close:focus {
+  color: rgb(241, 241, 167);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.fa-volume-off,
+.fa-volume-up {
+  height: 25px;
+  width: 25px;
+  color: rgb(65, 84, 136);
+  margin-left: 10px;
+  margin-top: 15px;
+  display: inline;
+}
+
+.fa-volume-off {
+  display: none;
+}
+
+/* ~~~~~~~~~DESKTOP VIEW~~~~~~~~~~ */
+
+@media only screen and (min-width: 768px) {
   .cardContainer {
     width: 600px; /* changed height + width to make images bigger */
     height: 600px;
@@ -175,7 +195,7 @@
     perspective: 1000px; /* adds depth to cards when flipping */
     pointer-events: none;
   }
-  
+
   .card {
     box-sizing: border-box;
     width: calc(25% - 10px); /* changed height and width */
@@ -188,19 +208,19 @@
     transform: scale(1);
     margin: auto;
   }
-  
+
   .card:active {
     transform: scale(0.97); /* will transform to 97% of its size */
     transition: all 0.5s; /* allows us to click card */
   }
-  
+
   .card_front,
   .card_bottom {
     position: absolute;
     height: 100%;
     width: 100%; /* fits both imgs to size of card container */
   }
-  
+
   .card_bottom {
     transform: rotateY(
       180deg
@@ -208,14 +228,14 @@
     transition: all 0.5s;
     backface-visibility: hidden; /* removes "mirror image" and prevents a "flickering" effect when card unflips when not a match*/
   }
-  
+
   /* tutorial setting "flip" class from the toggle classList function */
   .card.flip {
     transform: rotateY(180deg);
     transition: all 0.2s;
     backface-visibility: hidden; /* overrides auto setting to show a mirror image of front face when "flipped" */
   }
-  
+
   /* changed color for buttons */
   button {
     border: 1px solid rgb(65, 84, 136);
@@ -225,7 +245,7 @@
     color: rgb(1, 168, 168);
     background-color: rgb(241, 241, 167);
   }
-  
+
   .reset {
     border: 1px solid rgb(65, 84, 136);
     height: 50px;
@@ -234,7 +254,7 @@
     color: rgb(153, 91, 165);
     background-color: rgb(241, 241, 167);
   }
-  
+
   .modal {
     display: block;
     position: fixed;
@@ -268,7 +288,7 @@
     overflow: auto;
     background: rgb(65, 84, 136, 0.6);
   }
-  
+
   .modalContent {
     background: rgb(1, 168, 168);
     margin: 15% auto;
@@ -280,29 +300,27 @@
     font-weight: bolder;
     color: rgb(65, 84, 136);
   }
-  
+
   .close {
     color: rgb(153, 91, 165);
     font-size: 1.5em;
   }
-  
+
   .close:hover,
   .close:focus {
     color: rgb(241, 241, 167);
     text-decoration: none;
     cursor: pointer;
   }
-  
+
   .fa-volume-off,
   .fa-volume-up {
     height: 50px;
     width: 50px;
     color: rgb(65, 84, 136);
   }
-  
+
   .fa-volume-off {
     display: none;
   }
-  
-  
-  }
+}
