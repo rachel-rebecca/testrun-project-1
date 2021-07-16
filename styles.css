@@ -16,9 +16,8 @@ header {
 }
 
 h1,
-h2,
-h3 {
-  color: rgb(65, 84, 136);
+h2 {
+  color: rgb(105, 125, 182);
   text-align: center;
 }
 
@@ -34,6 +33,7 @@ h2 {
 
 h3 {
   font-size: 2rem;
+  color: rgb(65, 84, 136);
 }
 
 .cardContainer {
@@ -52,9 +52,7 @@ h3 {
 .card {
   box-sizing: border-box;
   width: calc(25% - 5px); /* changed height and width */
-  height: calc(
-    25% - 5px
-  ); /* calc function allows us to subtract margin from width and height */
+  height: calc(25% - 5px); /* calc function allows us to subtract margin from width and height */
   position: relative;
   transition: all 0.5s;
   transform-style: preserve-3d; /* also adds depth to cards while flipping */
@@ -75,9 +73,7 @@ h3 {
 }
 
 .card_bottom {
-  transform: rotateY(
-    180deg
-  ); /* tells back of card to also rotate 180 on the y-axis */
+  transform: rotateY(180deg); /* tells back of card to also rotate 180 on the y-axis */
   transition: all 0.5s;
   backface-visibility: hidden; /* removes "mirror image" and prevents a "flickering" effect when card unflips when not a match*/
 }
@@ -98,7 +94,7 @@ h3 {
 }
 
 button {
-  border: 1px solid rgb(65, 84, 136);
+  border: 1px solid rgb(105, 125, 182);
   height: 30px;
   width: 160px;
   border-radius: 22px;
@@ -109,7 +105,7 @@ button {
 }
 
 .reset {
-  border: 1px solid rgb(65, 84, 136);
+  border: 1px solid rgb(105, 125, 182);
   height: 30px;
   width: 160px;
   border-radius: 22px;
@@ -122,7 +118,7 @@ button {
 .start:hover,
 .reset:hover {
   color: rgb(241, 241, 167);
-  background: rgb(65, 84, 136);
+  background: rgb(105, 125, 182);
 }
 
 .modal {
@@ -168,7 +164,7 @@ button {
   text-align: center;
   font-size: 1.25em;
   font-weight: bolder;
-  color: rgb(65, 84, 136);
+  color:rgb(65, 84, 136);
 }
 
 .close {
@@ -215,11 +211,11 @@ button {
   }
 
   h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   h2 {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 
   h3 {
@@ -230,23 +226,19 @@ button {
     display: flex;
     margin: auto;
     justify-content: unset;
-    /* flex-shrink: inherit; */
     flex-grow: inherit;
   }
 
   .buttons {
     flex-direction: column;
-    /* justify-content: space-around; */
     width: 15%;
-    /* margin: auto; */
     flex-wrap: wrap;
     margin-right: 15%;
   }
 
   .cardContainer {
-    width: 600px; /* changed height + width to make images bigger */
+    width: 600px; 
     height: 75vh;
-    /* margin: auto; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -363,13 +355,18 @@ button {
     color: rgb(65, 84, 136);
   }
 
-  .close {
+  .close, .close2, .close3 {
     color: rgb(153, 91, 165);
     font-size: 1.5em;
+    display: block;
   }
 
   .close:hover,
-  .close:focus {
+  .close:focus,
+  .close2:hover,
+  .close2:focus,
+  .close3:hover,
+  .close3:focus {
     color: rgb(241, 241, 167);
     text-decoration: none;
     cursor: pointer;
