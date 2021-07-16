@@ -13,8 +13,8 @@
   }
 
   .cardContainer {
-    width: 350px; 
-    height: 350px;
+    width: 325px; 
+    height: 325px;
     margin: auto;
     display: flex;
     justify-content: center;
@@ -62,20 +62,28 @@
     backface-visibility: hidden; /* overrides auto setting to show a mirror image of front face when "flipped" */
   }
   
-  /* changed color for buttons */
+  .buttons {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+
   button {
     border: 1px solid rgb(65, 84, 136);
     height: 30px;
-    width: 200px;
+    width: 150px;
     border-radius: 22px;
     color: rgb(1, 168, 168);
     background-color: rgb(241, 241, 167);
+    align-items: center;
   }
   
   .reset {
     border: 1px solid rgb(65, 84, 136);
     height: 30px;
-    width: 200px;
+    width: 150px;
     border-radius: 22px;
     color: rgb(153, 91, 165);
     background-color: rgb(241, 241, 167);
