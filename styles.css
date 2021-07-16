@@ -11,22 +11,24 @@ body {
   font-family: "Yomogi", cursive;
 }
 
-h1, h2, h3 {
-    color:rgb(65, 84, 136);
-    text-align: center;
+h1,
+h2,
+h3 {
+  color: rgb(65, 84, 136);
+  text-align: center;
 }
 
 h1 {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 h2 {
-    font-size: 1rem;
-    margin-bottom: 10px;
+  font-size: 1rem;
+  margin-bottom: 10px;
 }
 
 h3 {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 .cardContainer {
@@ -81,7 +83,6 @@ h3 {
   backface-visibility: hidden; /* overrides auto setting to show a mirror image of front face when "flipped" */
 }
 
-
 .buttons {
   display: flex;
   justify-content: center;
@@ -97,6 +98,7 @@ button {
   color: rgb(1, 168, 168);
   background-color: rgb(241, 241, 167);
   align-items: center;
+  font-family: "Yomogi", cursive;
 }
 
 .reset {
@@ -107,7 +109,15 @@ button {
   color: rgb(153, 91, 165);
   background-color: rgb(241, 241, 167);
   margin-top: 5px;
+  font-family: "Yomogi", cursive;
 }
+
+.start:hover,
+.reset:hover {
+    color:rgb(241, 241, 167);
+    background:rgb(65, 84, 136);
+}
+
 
 .modal {
   display: block;
@@ -177,6 +187,11 @@ button {
   display: inline;
 }
 
+.fa-volume-off:hover,
+.fa-volume-up:hover {
+    color:rgb(241, 241, 167);
+}
+
 .fa-volume-off {
   display: none;
 }
@@ -184,6 +199,30 @@ button {
 /* ~~~~~~~~~DESKTOP VIEW~~~~~~~~~~ */
 
 @media only screen and (min-width: 768px) {
+
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+      font-size: 2.5rem;
+  }
+
+  
+
+  .buttons{
+      flex-direction: row;
+      justify-content: space-around;
+      width: 600px;
+      margin: auto;
+      flex-wrap: wrap;
+  }
+
   .cardContainer {
     width: 600px; /* changed height + width to make images bigger */
     height: 600px;
@@ -222,9 +261,7 @@ button {
   }
 
   .card_bottom {
-    transform: rotateY(
-      180deg
-    ); /* tells back of card to also rotate 180 on the y-axis */
+    transform: rotateY(180deg); /* tells back of card to also rotate 180 on the y-axis */
     transition: all 0.5s;
     backface-visibility: hidden; /* removes "mirror image" and prevents a "flickering" effect when card unflips when not a match*/
   }
@@ -236,23 +273,26 @@ button {
     backface-visibility: hidden; /* overrides auto setting to show a mirror image of front face when "flipped" */
   }
 
-  /* changed color for buttons */
+  
   button {
     border: 1px solid rgb(65, 84, 136);
     height: 50px;
-    width: 122px;
+    width: 50%;
     border-radius: 22px;
     color: rgb(1, 168, 168);
     background-color: rgb(241, 241, 167);
+    font-size: 1.5rem;
+    margin-top: 10px;
   }
 
   .reset {
     border: 1px solid rgb(65, 84, 136);
     height: 50px;
-    width: 122px;
+    width: 50%;
     border-radius: 22px;
     color: rgb(153, 91, 165);
     background-color: rgb(241, 241, 167);
+    margin-top: 10px;
   }
 
   .modal {
@@ -315,8 +355,8 @@ button {
 
   .fa-volume-off,
   .fa-volume-up {
-    height: 50px;
-    width: 50px;
+    height: 30px;
+    width: 30px;
     color: rgb(65, 84, 136);
   }
 
