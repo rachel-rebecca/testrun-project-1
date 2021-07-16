@@ -1,5 +1,27 @@
 // ~~declaring variables that will be used again.~~
 
+let volumeButton = document.querySelector(".volumeButton");
+let soundMute = document.querySelector(".fa-volume-off");
+let soundUp = document.querySelector(".fa-volume-up");
+var music = document.querySelector("#music");
+
+
+function playMusic(){
+    volumeButton.addEventListener("click", () => {
+        if (music.paused){
+            soundMute.style.display = "none";
+            soundUp.style.display = "block";
+            music.play();
+        } else {
+            soundMute.style.display = "block";
+            soundUp.style.display = "none";
+            music.pause();
+        }
+    });
+
+}
+console.log(music);
+
 let cardFronts = document.querySelectorAll(".card_front");
 
 let cardBacks = document.querySelectorAll(".card_bottom");
@@ -12,7 +34,96 @@ let firstCard, secondCard; // <-- sets empty variables that will be assigned a v
 
 let lockBoard = false; // variable for locking board after cards have flipped. Player cannot select more than 2 cards at a time
 
-let removedCards = [];
+
+let closeButton = document.querySelector(".close");
+let modal = document.querySelector(".modal");
+
+closeButton.addEventListener("click", () => {
+    modal.style.display = "none";
+    playMusic();
+});
+
+// var timer = document.querySelector('h3')
+// var startingTime = 60
+// var startTimer;
+// var timeout;
+// var startStopTimer = () => {
+
+// if(startTimer){
+//     resetBoard();
+//     clearInterval(startTimer);
+//     clearTimeout(timeout);
+//     timer.innerHTML = '1:00';
+
+//   }else{
+    
+//     timeout = setTimeout(() => {
+//         clearInterval(startTimer);
+//         alert("Time's Up!");
+//     }, 61000)
+//     return startTimer = setInterval(()=>{
+//       timer.innerHTML = `00:${--startingTime}`
+//     }, 1000)
+//     ;
+// }
+// }
+
+var timerText = document.querySelector('h3');
+var startingTime = 59;
+var timeout;
+var timerOn = 0;
+var section = document.querySelector("section");
+let closeButton2 = document.querySelector(".close2");
+let closeButton3 = document.querySelector(".close3");
+let winner = document.querySelector("#win");
+let loser = document.querySelector("#lose");
+
+function startTimer () {
+    timerText.innerHTML = `00:${startingTime}`;
+    startingTime = startingTime -1;
+    timeout = setTimeout(startTimer, 1000);
+    section.style.pointerEvents = "all";
+    document.querySelector(".start").style.pointerEvents = "none";
+
+    if(removedCards.length == 16){
+        console.log(startingTime);
+        document.querySelector(".displayedTime").innerHTML = `${startingTime + 2} seconds!`;
+        let modal2 = document.querySelector(".modal2");
+        modal2.style.display = "block";
+        closeButton2.addEventListener("click", () => {
+            modal2.style.display = "none";
+        });
+        stopTimer();
+        resetBoard();
+        winner.play();
+    
+    } else if (startingTime == -2) {
+        stopTimer();
+        resetBoard();
+        let modal3 = document.querySelector(".modal3");
+        modal3.style.display = "block";
+        closeButton3.addEventListener("click", () => {
+        modal3.style.display = "none";
+        });
+        loser.play();
+    }
+}
+
+function timerIsOn () {
+    if (!timerOn) {
+        timerOn = 1;
+        startTimer()
+    }
+}
+
+function stopTimer () {
+    clearTimeout(timeout);
+    timerOn = 0;
+    startingTime = 59;
+    timerText.innerHTML = `01:00`;
+    resetBoard();
+    document.querySelector(".start").style.pointerEvents = "all";
+}
 
 
 
@@ -68,17 +179,20 @@ function flipCard() {
 };
 
 
+let yayClip = document.querySelector("#food");
+let booClip = document.querySelector("#animal");
 
 
-
-var soundEffect = document.querySelector("#soundEffect")
 
 function checkMatch () {
     if (firstCard.dataset.name === secondCard.dataset.name) { 
      
         removeCard();// if there's a match, remove both cards
-        soundEffect.play();
-
+        if (firstCard.dataset.type === "food" && secondCard.dataset.type === "food"){
+            yayClip.play();
+        } else {
+            booClip.play();
+        }
     } else {
 
        unflipCards(); // if there's no match, call unflip cards functions
@@ -94,7 +208,7 @@ function checkMatch () {
 
 
 
-
+var removedCards = [];
 
 function removeCard () {
     
@@ -105,8 +219,7 @@ function removeCard () {
 
         removedCards.push(firstCard);
         removedCards.push(secondCard);
-        console.log(removedCards)
-
+        console.log(removedCards);
  
         lockBoard = false;
         hasFlipped = false;
@@ -136,113 +249,33 @@ function unflipCards () {
 
 
 
+// What is the setInterval() in relation with the clearInterval() method and how it works together?
+//The setInterval() method calls a function or evaluates an expression at specified intervals (in milliseconds).  
+//The setInterval() method will continue calling the function until clearInterval() is called, or the window is closed.
+// ~~declaring variables that will be used again.~~
 
-
-
-var timerText = document.querySelector('h3');
-var startingTime = 59;
-var timeout;
-var timerOn = 0;
-var section = document.querySelector("section");
-
-function startTimer () {
-    timerText.innerHTML = `00:${startingTime}`;
-    startingTime = startingTime -1;
-    timeout = setTimeout(startTimer, 1000);
-    section.style.pointerEvents = "all";
-}
-
-function timerIsOn () {
-    if (!timerOn) {
-        timerOn = 1;
-        startTimer()
-    }
-}
-
-function stopTimer () {
-    clearTimeout(timeout);
-    timerOn = 0;
-    startingTime = 59;
-    timerText.innerHTML = `01:00`;
-    resetBoard();
-}
-
-// var startTimer;
-// var startStopTimer = () => {
-
-// if(startTimer){
-//     resetBoard();
-//     clearInterval(startTimer);
-//     clearTimeout(timeOut);
-//     timer.innerHTML = '1:00';
-
-//   }else{
-    
-//     var timeOut = setTimeout(() => {
-//         clearInterval(startTimer);
-//         alert("Time's Up!");
-//     }, 61000)
-//     return startTimer = setInterval(()=>{
-//       timer.innerHTML = `00:${--startingTime}`
-//     }, 1000)
-//     ;
-// }
-// }
-
-// function startTimer () {
-//     var timer = 60, minutes, seconds;
-//     setInterval (() => {
-//         minutes = parseInt(timer / 60, 10);
-//         seconds = parseInt (timer % 60, 10);
-
-//         minutes = minutes < 10 ? "0" + minutes : minutes;
-//         seconds = seconds < 10 ? "0" + seconds : seconds;
-
-//         timerText.innerHTML = minutes + ":" + seconds;
-
-//         if (--timer < 0) {
-//             timer = duration;
-//         }
-//     }, 1000)
-
-
-// }
-
-// function stopTimer () {
-//         resetBoard();
-//         clearInterval();
-//         clearTimeout();
-//         timerText.innerHTML = '1:00';
-// }
-
-
-
-let closeButton = document.querySelector("span");
-let modal = document.querySelector(".modal");
-
-closeButton.addEventListener("click", () => {
-    modal.style.display = "none";
-})
 
 function resetBoard () {
     cardsArray.forEach(card => card.style.visibility = "visible");
     cardsArray.forEach(card => card.classList.remove("flip"));
     shuffleCards();
+    removedCards = [];
+    section.style.pointerEvents = "none";
 }
 
+//Misc notes: 
 
-let soundMute = document.querySelector(".fa-volume-off");
-let soundUp = document.querySelector(".fa-volume-up");
-var music = document.querySelector("#music");
+// var myTimer; 
+// function clock() {
+//     myTimer = setInterval(myClock, 1000);
+//     var i = 30;
 
-soundMute.addEventListener("click", () => {
-    soundMute.style.display = "none";
-    soundUp.style.display = "block";
-    music.play();
-})
+//     function myClock() {
+//         document.getElementById("demo").innerHTML = i--;
+//         if (i == 0) {
+//           clearInterval(myTimer);
+//           alert("Reached zero");
+//         }
+//       }
+//     }
 
-soundUp.addEventListener("click", () => {
-    soundMute.style.display = "block";
-    soundUp.style.display = "none";
-    music.pause();
-})
