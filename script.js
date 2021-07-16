@@ -79,6 +79,7 @@ let winner = document.querySelector("#win");
 let loser = document.querySelector("#lose");
 
 function startTimer () {
+    timerText.style.color = "rgb(241, 241, 167)";
     timerText.innerHTML = `00:${startingTime}`;
     startingTime = startingTime -1;
     timeout = setTimeout(startTimer, 1000);
@@ -87,7 +88,7 @@ function startTimer () {
 
     if(removedCards.length == 16){
         console.log(startingTime);
-        document.querySelector(".displayedTime").innerHTML = `${startingTime + 2} seconds!`;
+        document.querySelector(".displayedTime").innerHTML = `${60 - (startingTime + 2)} seconds!`;
         let modal2 = document.querySelector(".modal2");
         modal2.style.display = "block";
         closeButton2.addEventListener("click", () => {
@@ -120,6 +121,7 @@ function stopTimer () {
     clearTimeout(timeout);
     timerOn = 0;
     startingTime = 59;
+    timerText.style.color = "rgb(65, 84, 136)"
     timerText.innerHTML = `01:00`;
     resetBoard();
     document.querySelector(".start").style.pointerEvents = "all";

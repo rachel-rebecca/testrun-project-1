@@ -11,6 +11,10 @@ body {
   font-family: "Yomogi", cursive;
 }
 
+header {
+    width: 100%;
+}
+
 h1,
 h2,
 h3 {
@@ -117,10 +121,9 @@ button {
 
 .start:hover,
 .reset:hover {
-    color:rgb(241, 241, 167);
-    background:rgb(65, 84, 136);
+  color: rgb(241, 241, 167);
+  background: rgb(65, 84, 136);
 }
-
 
 .modal {
   display: block;
@@ -192,7 +195,7 @@ button {
 
 .fa-volume-off:hover,
 .fa-volume-up:hover {
-    color:rgb(241, 241, 167);
+  color: rgb(241, 241, 167);
 }
 
 .fa-volume-off {
@@ -203,6 +206,13 @@ button {
 
 @media only screen and (min-width: 768px) {
 
+  header {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction:column;
+    flex-shrink: inherit;
+  }
 
   h1 {
     font-size: 2rem;
@@ -213,29 +223,37 @@ button {
   }
 
   h3 {
-      font-size: 2.5rem;
+    font-size: 2.5rem;
   }
 
-  
+  main {
+    display: flex;
+    margin: auto;
+    justify-content: unset;
+    /* flex-shrink: inherit; */
+    flex-grow: inherit;
+  }
 
-  .buttons{
-      flex-direction: row;
-      justify-content: space-around;
-      width: 600px;
-      margin: auto;
-      flex-wrap: wrap;
+  .buttons {
+    flex-direction: column;
+    /* justify-content: space-around; */
+    width: 15%;
+    /* margin: auto; */
+    flex-wrap: wrap;
+    margin-right: 15%;
   }
 
   .cardContainer {
     width: 600px; /* changed height + width to make images bigger */
-    height: 600px;
-    margin: auto;
+    height: 75vh;
+    /* margin: auto; */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     perspective: 1000px; /* adds depth to cards when flipping */
     pointer-events: none;
+    margin-left: 25%;
   }
 
   .card {
@@ -264,7 +282,9 @@ button {
   }
 
   .card_bottom {
-    transform: rotateY(180deg); /* tells back of card to also rotate 180 on the y-axis */
+    transform: rotateY(
+      180deg
+    ); /* tells back of card to also rotate 180 on the y-axis */
     transition: all 0.5s;
     backface-visibility: hidden; /* removes "mirror image" and prevents a "flickering" effect when card unflips when not a match*/
   }
@@ -276,11 +296,10 @@ button {
     backface-visibility: hidden; /* overrides auto setting to show a mirror image of front face when "flipped" */
   }
 
-  
   button {
     border: 1px solid rgb(65, 84, 136);
     height: 50px;
-    width: 50%;
+    width: 100%;
     border-radius: 22px;
     color: rgb(1, 168, 168);
     background-color: rgb(241, 241, 167);
@@ -291,7 +310,7 @@ button {
   .reset {
     border: 1px solid rgb(65, 84, 136);
     height: 50px;
-    width: 50%;
+    width: 100%;
     border-radius: 22px;
     color: rgb(153, 91, 165);
     background-color: rgb(241, 241, 167);
