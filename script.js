@@ -12,19 +12,21 @@ let firstCard, secondCard; // <-- sets empty variables that will be assigned a v
 
 let lockBoard = false; // variable for locking board after cards have flipped. Player cannot select more than 2 cards at a time
 
+let removedCards = [];
 
 
 
 
-// written as an IIFE to automatically run when page loads
-(function shuffleCards () {
+function shuffleCards () {
     cardsArray.forEach(card => {
         let random = Math.floor(Math.random() * 16);
         card.style.order = random;
         console.log(random)
     })
     
-})();
+}
+
+shuffleCards();
 
 
 
@@ -69,12 +71,13 @@ function flipCard() {
 
 
 
-
+var soundEffect = document.querySelector("#soundEffect")
 
 function checkMatch () {
     if (firstCard.dataset.name === secondCard.dataset.name) { 
      
         removeCard();// if there's a match, remove both cards
+        soundEffect.play();
 
     } else {
 
@@ -100,6 +103,10 @@ function removeCard () {
         firstCard.style.visibility = "hidden";
         secondCard.style.visibility = "hidden";
 
+        removedCards.push(firstCard);
+        removedCards.push(secondCard);
+        console.log(removedCards)
+
  
         lockBoard = false;
         hasFlipped = false;
@@ -120,7 +127,7 @@ function unflipCards () {
         lockBoard = false;
         hasFlipped = false; // re-assign to false, to reset board
         
-    }, 1500); // use setTimeout to allow second card to be able to flip still
+    }, 600); // use setTimeout to allow second card to be able to flip still
     
 };
 
@@ -128,9 +135,114 @@ function unflipCards () {
 
 
 
-function reset () {
-   
+
+
+
+
+var timerText = document.querySelector('h3');
+var startingTime = 59;
+var timeout;
+var timerOn = 0;
+var section = document.querySelector("section");
+
+function startTimer () {
+    timerText.innerHTML = `00:${startingTime}`;
+    startingTime = startingTime -1;
+    timeout = setTimeout(startTimer, 1000);
+    section.style.pointerEvents = "all";
+}
+
+function timerIsOn () {
+    if (!timerOn) {
+        timerOn = 1;
+        startTimer()
+    }
+}
+
+function stopTimer () {
+    clearTimeout(timeout);
+    timerOn = 0;
+    startingTime = 59;
+    timerText.innerHTML = `01:00`;
+    resetBoard();
+}
+
+// var startTimer;
+// var startStopTimer = () => {
+
+// if(startTimer){
+//     resetBoard();
+//     clearInterval(startTimer);
+//     clearTimeout(timeOut);
+//     timer.innerHTML = '1:00';
+
+//   }else{
     
+//     var timeOut = setTimeout(() => {
+//         clearInterval(startTimer);
+//         alert("Time's Up!");
+//     }, 61000)
+//     return startTimer = setInterval(()=>{
+//       timer.innerHTML = `00:${--startingTime}`
+//     }, 1000)
+//     ;
+// }
+// }
+
+// function startTimer () {
+//     var timer = 60, minutes, seconds;
+//     setInterval (() => {
+//         minutes = parseInt(timer / 60, 10);
+//         seconds = parseInt (timer % 60, 10);
+
+//         minutes = minutes < 10 ? "0" + minutes : minutes;
+//         seconds = seconds < 10 ? "0" + seconds : seconds;
+
+//         timerText.innerHTML = minutes + ":" + seconds;
+
+//         if (--timer < 0) {
+//             timer = duration;
+//         }
+//     }, 1000)
+
+
+// }
+
+// function stopTimer () {
+//         resetBoard();
+//         clearInterval();
+//         clearTimeout();
+//         timerText.innerHTML = '1:00';
+// }
+
+
+
+let closeButton = document.querySelector("span");
+let modal = document.querySelector(".modal");
+
+closeButton.addEventListener("click", () => {
+    modal.style.display = "none";
+})
+
+function resetBoard () {
+    cardsArray.forEach(card => card.style.visibility = "visible");
+    cardsArray.forEach(card => card.classList.remove("flip"));
+    shuffleCards();
 }
 
 
+let soundMute = document.querySelector(".fa-volume-off");
+let soundUp = document.querySelector(".fa-volume-up");
+var music = document.querySelector("#music");
+
+soundMute.addEventListener("click", () => {
+    soundMute.style.display = "none";
+    soundUp.style.display = "block";
+    music.play();
+})
+
+soundUp.addEventListener("click", () => {
+    soundMute.style.display = "block";
+    soundUp.style.display = "none";
+    music.pause();
+})

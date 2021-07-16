@@ -17,7 +17,8 @@ body {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  perspective: 1000px; /* adds depth to cards when flipping */
+  perspective: 1000px;
+  pointer-events: none; /* adds depth to cards when flipping */
 }
 
 .card {
@@ -25,7 +26,7 @@ body {
   width: calc(25% - 10px); /* changed height and width */
   height: calc(25% - 10px); /* calc function allows us to subtract margin from width and height */
   position: relative;
-  transition: all 0.6s;
+  transition: all 0.5s;
   transform-style: preserve-3d; /* also adds depth to cards while flipping */
   transform: scale(1);
   margin: auto;
@@ -33,7 +34,7 @@ body {
 
 .card:active {
   transform: scale(0.97); /* will transform to 97% of its size */
-  transition: all 0.6s; /* allows us to click card */
+  transition: all 0.5s; /* allows us to click card */
 }
 
 .card_front,
@@ -45,7 +46,7 @@ body {
 
 .card_bottom {
   transform: rotateY(180deg); /* tells back of card to also rotate 180 on the y-axis */
-  transition: all 0.6s; 
+  transition: all 0.5s; 
   backface-visibility: hidden; /* removes "mirror image" and prevents a "flickering" effect when card unflips when not a match*/
 }
 
@@ -76,3 +77,54 @@ button {
   color: rgb(153, 91, 165);
   background-color: rgb(241, 241, 167);
 }
+
+
+.modal {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background:rgb(65, 84, 136, 0.6);
+}
+
+.modalContent {
+    background: rgb(1, 168, 168);
+    margin: 15% auto;
+    padding: 20px;
+    border: 5px solid rgb(65, 84, 136);
+    width: 80%;
+    text-align: center;
+    font-size: 1.25em;
+    font-weight: bolder;
+    color:rgb(65, 84, 136);
+}
+
+.close {
+    color: rgb(153, 91, 165);
+    font-size: 1.5em;
+    
+}
+
+.close:hover,
+.close:focus {
+    color:rgb(241, 241, 167);
+    text-decoration: none;
+    cursor: pointer;
+    
+}
+
+
+.fa-volume-off, .fa-volume-up {
+    height: 100px;
+    width: 100px;
+    color:rgb(65, 84, 136);
+}
+
+.fa-volume-up {
+    display: none;
+}
+  
