@@ -391,3 +391,58 @@ button {
     display: none;
   }
 }
+
+@supports (-webkit-touch-callout: none) {
+    .cardContainer {
+        width: 325px;
+        height: 325px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        perspective: 1000px; /* adds depth to cards when flipping */
+        pointer-events: none;
+        margin-top: 20px;
+      }
+      
+      .card {
+        box-sizing: border-box;
+        width: calc(25% - 5px); /* changed height and width */
+        height: calc(
+          25% - 5px
+        ); /* calc function allows us to subtract margin from width and height */
+        position: relative;
+        transition: all 0.5s;
+        transform-style: preserve-3d; /* also adds depth to cards while flipping */
+        transform: scale(1);
+        margin: auto;
+      }
+      
+      .card:active {
+        transform: scale(0.97); /* will transform to 97% of its size */
+        transition: all 0.5s; /* allows us to click card */
+      }
+      
+      .card_front,
+      .card_bottom {
+        position: absolute;
+        height: 100%;
+        width: 100%; /* fits both imgs to size of card container */
+      }
+      
+      .card_bottom {
+        transform: rotateY(
+          180deg
+        ); /* tells back of card to also rotate 180 on the y-axis */
+        transition: all 0.5s;
+        backface-visibility: hidden; /* removes "mirror image" and prevents a "flickering" effect when card unflips when not a match*/
+      }
+      
+      /* tutorial setting "flip" class from the toggle classList function */
+      .card.flip {
+        transform: rotateY(180deg);
+        transition: all 0.2s;
+        backface-visibility: hidden; 
+      }
+}
