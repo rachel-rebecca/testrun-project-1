@@ -159,10 +159,6 @@ function flipCard() {
         return;
     }
 
-    // makes sure first card cannot be double clicked, taking both firstCard and secondCard place
-    if (this === firstCard) {
-        return;
-    }
 
     this.classList.toggle("flip");
 

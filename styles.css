@@ -231,7 +231,7 @@ button {
   main {
     display: flex;
     margin: auto;
-    justify-content: unset;
+    /* justify-content: unset; */
     flex-grow: inherit;
   }
 
@@ -239,7 +239,7 @@ button {
     flex-direction: column;
     width: 15%;
     flex-wrap: wrap;
-    margin-right: 15%;
+    margin-right: auto;
     margin-left: 10px;
   }
 
@@ -252,7 +252,8 @@ button {
     flex-wrap: wrap;
     perspective: 1000px; /* adds depth to cards when flipping */
     pointer-events: none;
-    margin-left: 25%;
+    margin-right: 20px;
+    margin-left: auto;
   }
 
   .card {
